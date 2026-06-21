@@ -315,10 +315,11 @@ color: #9aa7b6;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  background: linear-gradient(135deg, #4facfe, #f9d423);
-  color: #111;
+  transform: translateY(-12px);
+  box-shadow: 0 15px 35px rgba(79,172,254,0.25);
+  border-color: rgba(79,172,254,0.4);
 }
+
 
 
 
