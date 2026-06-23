@@ -402,3 +402,23 @@ color: #9aa7b6;
 .footer-icons a:hover {
   color: #ff9800;
 }
+
+/* =======Sucess Message for Form==========*/
+.success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateX(150%);
+  transition: 0.4s ease;
+  z-index: 1000;
+}
+
+.success-message.show {
+  transform: translateX(0);
+}
