@@ -161,7 +161,7 @@
       </p>
 
       <div style="margin-top:15px;">
-        <a href="https://github.com/Dinosh1432/TEAM-81`" target="_blank">
+        <a href="https://github.com/Dinosh1432/TEAM-81" target="_blank">
           View Project →
         </a>
       </div>
@@ -177,12 +177,73 @@
   <div class="contact-container">
   <div>
   <p>Let’s connect! Fill the form or reach out via social links.</p>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <form id="contactForm">
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+  />
+
+  <textarea
+    name="message"
+    rows="5"
+    placeholder="Your Message"
+    required
+  ></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+<div id="successMessage" class="success-message">
+  ✅ Message Sent Successfully!
+</div>
+<script>
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = {
+      name: this.name.value,
+      email: this.email.value,
+      message: this.message.value,
+    };
+
+    const response = await fetch(
+      "http://localhost:5000/send-mail",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+     const successMsg = document.getElementById("successMessage");
+
+successMsg.classList.add("show");
+
+setTimeout(() => {
+  successMsg.classList.remove("show");
+}, 3000);
+
+this.reset();
+    } else {
+      alert("Failed to send message");
+    }
+  });
+</script>
   </div>
   <div>
     <p>Quick Links</p>
